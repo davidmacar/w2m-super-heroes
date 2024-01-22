@@ -1,0 +1,13 @@
+spring:
+  devtools:
+    restart:
+      poll-interval: 2s
+server:
+  error:
+#    Incluir el mensaje de error de la excepcion
+    include-message: always
+    include-binding-errors: always
+#    Icluir la traza de error en el log -> En produccion se debe poner never para no mostrar informacion sensible
+    include-stacktrace: always
+#    Incluir la excepcion en el log
+    include-exception: true
