@@ -4,7 +4,7 @@
 
 <mapper namespace="com.world2meet.superHeroesApi.infrastructure.mapper.SuperHeroMapper">
 
-    <resultMap id = "superHeroResultMap" type = "com.world2meet.superHeroesApi.domain.model.SuperHero">
+    <resultMap id = "superHeroResultMap" type = "com.world2meet.superHeroesApi.domain.model.SuperHeroDto">
         <result property = "superHeroName" column = "superHeroName" />
         <result property = "realName" column = "realName"/>
         <result property = "universe" column = "universe"/>

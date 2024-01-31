@@ -1,5 +1,6 @@
-package com.world2meet.superHeroesApi.domain.exception;
+package com.world2meet.superHeroesApi.domain.utils;
 
+import java.util.logging.Logger;
 import org.apache.coyote.BadRequestException;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.http.HttpStatus;
@@ -27,7 +28,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<String> handleRuntimeException(RuntimeException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        Logger.getLogger("GlobalExceptionHandler").info("GlobalExceptionHandler: " + e.getMessage());
+        return new ResponseEntity<>("RuntimeException: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     /**
@@ -39,6 +41,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<String> handleNotFoundException(NotFoundException e) {
+        Logger.getLogger("GlobalExceptionHandler").info("GlobalExceptionHandler: " + e.getMessage());
         return new ResponseEntity<>("Recurso no encontrado", HttpStatus.NOT_FOUND);
     }
 
@@ -51,6 +54,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<String> handleBadRequestException(BadRequestException e) {
+        Logger.getLogger("GlobalExceptionHandler").info("GlobalExceptionHandler: " + e.getMessage());
         return new ResponseEntity<>("Solicitud incorrecta", HttpStatus.BAD_REQUEST);
     }
 

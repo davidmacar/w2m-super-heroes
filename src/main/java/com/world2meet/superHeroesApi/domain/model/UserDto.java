@@ -1,4 +1,4 @@
-package com.world2meet.superHeroesApi.authentication.model;
+package com.world2meet.superHeroesApi.domain.model;
 
 import java.util.Collection;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class User implements UserDetails {
+public class UserDto implements UserDetails {
     private String username;
     private String password;
     private Role role;

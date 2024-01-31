@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class SuperHero{
-
+public class SuperHeroDto {
     private String superHeroName;
     private String realName;
     private String universe;

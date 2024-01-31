@@ -1,6 +1,6 @@
 package com.world2meet.superHeroesApi.infrastructure.config;
 
-import com.world2meet.superHeroesApi.authentication.repository.UserRepositoryPort;
+import com.world2meet.superHeroesApi.domain.repository.UserRepositoryPort;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @AllArgsConstructor
 public class ApplicationConfig {
 
-    private final UserRepositoryPort userRepositoryPort;
+    private final UserRepositoryPort userRepository;
 
     /**
      * AuthenticationManager.
@@ -64,7 +64,7 @@ public class ApplicationConfig {
      */
     @Bean
     public UserDetailsService userDetailService() {
-        return username -> this.userRepositoryPort.findByUsername(username)
+        return username -> this.userRepository.findByUsername(username)
                 .orElseThrow(()-> new UsernameNotFoundException("User not fournd"));
     }
 }

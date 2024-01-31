@@ -1,6 +1,6 @@
-package com.world2meet.superHeroesApi.authentication.config;
+package com.world2meet.superHeroesApi.infrastructure.config;
 
-import com.world2meet.superHeroesApi.authentication.service.JwtServicePort;
+import com.world2meet.superHeroesApi.domain.service.JwtServicePort;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.world2meet.superHeroesApi.authentication.repository.UserMapper">
+<mapper namespace="com.world2meet.superHeroesApi.infrastructure.mapper.UserMapper">
 
-    <resultMap id = "userApi" type = "com.world2meet.superHeroesApi.authentication.model.User">
+    <resultMap id = "userApi" type = "com.world2meet.superHeroesApi.domain.model.UserDto">
         <result column = "username" property = "username" javaType="String"/>
         <result column = "password" property = "password" javaType="String"/>
-        <result column = "role" property = "role" javaType="com.world2meet.superHeroesApi.authentication.model.Role"/>
+        <result column = "role" property = "role" javaType="com.world2meet.superHeroesApi.domain.model.Role"/>
     </resultMap>
 
     <select id="findByUsername" parameterType="String" resultMap="userApi">
@@ -16,14 +16,14 @@
         WHERE username = #{username}
     </select>
 
-    <select id="login" parameterType="com.world2meet.superHeroesApi.authentication.model.User" resultMap="userApi">
+    <select id="login" parameterType="com.world2meet.superHeroesApi.domain.model.UserDto" resultMap="userApi">
         SELECT (username, password, role)
         FROM userApi
         WHERE username = #{username}
             AND password = #{password}
     </select>
 
-    <insert id="register" parameterType="com.world2meet.superHeroesApi.authentication.model.User">
+    <insert id="register" parameterType="com.world2meet.superHeroesApi.domain.model.UserDto">
         INSERT INTO userApi (username, password, role)
         VALUES (#{username}, #{password}, #{role})
     </insert>

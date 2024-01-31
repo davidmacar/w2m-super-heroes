@@ -1,4 +1,4 @@
-package com.world2meet.superHeroesApi.authentication.config;
+package com.world2meet.superHeroesApi.infrastructure.config;
 
 
 
@@ -20,7 +20,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-
     private final AuthenticationProvider authProvider;
 
     @Bean

@@ -1,5 +1,6 @@
-package com.world2meet.superHeroesApi.authentication.service;
+package com.world2meet.superHeroesApi.application.service;
 
+import com.world2meet.superHeroesApi.domain.service.JwtServicePort;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

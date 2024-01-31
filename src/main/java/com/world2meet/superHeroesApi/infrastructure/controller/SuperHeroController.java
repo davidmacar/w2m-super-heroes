@@ -1,6 +1,6 @@
 package com.world2meet.superHeroesApi.infrastructure.controller;
 
-import com.world2meet.superHeroesApi.domain.model.SuperHero;
+import com.world2meet.superHeroesApi.domain.model.SuperHeroDto;
 import com.world2meet.superHeroesApi.domain.service.DeleteSuperHeroServicePort;
 import com.world2meet.superHeroesApi.domain.service.GetSuperHeroServicePort;
 import com.world2meet.superHeroesApi.domain.service.ModifySuperHeroServicePort;
@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class SuperHeroController {
 
     private final GetSuperHeroServicePort getSuperHeroServicePort;
-
     private final DeleteSuperHeroServicePort deleteSuperHeroServicePort;
-
     private final ModifySuperHeroServicePort modifySuperHeroServicePort;
 
 
@@ -31,27 +29,27 @@ public class SuperHeroController {
 
     @PostMapping("/getSuperHeroById")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> getSuperHeroById(@RequestBody SuperHero superHero) {
+    public ResponseEntity<?> getSuperHeroById(@RequestBody SuperHeroDto superHero) {
         return ResponseEntity.ok(this.getSuperHeroServicePort.getSuperHeroById(superHero));
     }
 
     @PostMapping("/getSuperHeroesContainingInName")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> getSuperHeroesContainingInName(@RequestBody SuperHero superHero) {
+    public ResponseEntity<?> getSuperHeroesContainingInName(@RequestBody SuperHeroDto superHero) {
         return ResponseEntity.ok(this.getSuperHeroServicePort.getSuperHeroesContainingInName(superHero));
     }
 
     @PutMapping("/modifySuperHero")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> modifySuperHero(@RequestBody SuperHero superHero) {
+    public ResponseEntity<?> modifySuperHero(@RequestBody SuperHeroDto superHero) {
         this.modifySuperHeroServicePort.modifySuperHero(superHero);
         return ResponseEntity.ok("SuperHero modified");
     }
 
     @DeleteMapping("/deleteSuperHero")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> deleteSuperHero(@RequestBody SuperHero superHero) {
-        this.deleteSuperHeroServicePort.deleteSuperHero(superHero);
+    public ResponseEntity<?> deleteSuperHero(@RequestBody SuperHeroDto superHeroDto) {
+        this.deleteSuperHeroServicePort.deleteSuperHero(superHeroDto);
         return ResponseEntity.ok("SuperHero deleted");
     }
 

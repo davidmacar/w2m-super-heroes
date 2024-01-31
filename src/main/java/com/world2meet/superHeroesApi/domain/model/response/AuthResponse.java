@@ -1,4 +1,4 @@
-package com.world2meet.superHeroesApi.authentication.model;
+package com.world2meet.superHeroesApi.domain.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

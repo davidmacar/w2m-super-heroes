@@ -1,14 +1,13 @@
 package com.world2meet.superHeroesApi.application.service;
 
-import com.world2meet.superHeroesApi.domain.annotation.LogExecutionTime;
-import com.world2meet.superHeroesApi.domain.model.SuperHero;
+import com.world2meet.superHeroesApi.domain.model.SuperHeroDto;
 import com.world2meet.superHeroesApi.domain.repository.SuperHeroRepositoryPort;
 import com.world2meet.superHeroesApi.domain.service.GetSuperHeroServicePort;
+import com.world2meet.superHeroesApi.domain.utils.LogExecutionTime;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -19,19 +18,19 @@ public class GetSuperHeroServiceAdapter implements GetSuperHeroServicePort {
 
     @Override
     @LogExecutionTime
-    public SuperHero getSuperHeroById(SuperHero superHero) {
+    public SuperHeroDto getSuperHeroById(SuperHeroDto superHero) {
         return this.superHeroRepositoryPort.getSuperHeroById(superHero);
     }
 
     @Override
     @LogExecutionTime
-    public List<SuperHero> getAllSuperHeroes() {
+    public List<SuperHeroDto> getAllSuperHeroes() {
         return this.superHeroRepositoryPort.getAllSuperHeroes();
     }
 
     @Override
     @LogExecutionTime
-    public List<SuperHero> getSuperHeroesContainingInName(SuperHero superHero) {
+    public List<SuperHeroDto> getSuperHeroesContainingInName(SuperHeroDto superHero) {
         return null;
     }
 }

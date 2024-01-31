@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
                 contact = @Contact(
                         name = "David Macías", email = "davidmaciascarbajo@hotmail.com"
                 ),
-                description = "SuperHeroes Management"
+                description = "SuperHeroes API with Spring Boot, MyBatis, Swagger, JWT, Caffeine Cache and H2 Database"
         )
 )
 @SecurityScheme(

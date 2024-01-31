@@ -1,4 +1,4 @@
-package com.world2meet.superHeroesApi.domain.annotation;
+package com.world2meet.superHeroesApi.domain.utils;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
