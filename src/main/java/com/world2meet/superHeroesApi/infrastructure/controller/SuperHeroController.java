@@ -4,15 +4,16 @@ import com.world2meet.superHeroesApi.domain.model.SuperHero;
 import com.world2meet.superHeroesApi.domain.service.DeleteSuperHeroServicePort;
 import com.world2meet.superHeroesApi.domain.service.GetSuperHeroServicePort;
 import com.world2meet.superHeroesApi.domain.service.ModifySuperHeroServicePort;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/superheros")
 @AllArgsConstructor
+@RequestMapping("/api/superheroes")
+@SecurityRequirement(name = "bearerAuth")
 public class SuperHeroController {
 
     private final GetSuperHeroServicePort getSuperHeroServicePort;
@@ -52,12 +53,6 @@ public class SuperHeroController {
     public ResponseEntity<?> deleteSuperHero(@RequestBody SuperHero superHero) {
         this.deleteSuperHeroServicePort.deleteSuperHero(superHero);
         return ResponseEntity.ok("SuperHero deleted");
-    }
-
-    @GetMapping("/pruebaOauth")
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> getPruebaOauth(Authentication auth) {
-        return ResponseEntity.ok("Hi " + auth.getName() + "! You are granted with: " +  auth.getAuthorities());
     }
 
 }

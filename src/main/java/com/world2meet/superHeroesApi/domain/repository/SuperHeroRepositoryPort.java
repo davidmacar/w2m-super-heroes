@@ -1,9 +1,8 @@
 package com.world2meet.superHeroesApi.domain.repository;
 
 import com.world2meet.superHeroesApi.domain.model.SuperHero;
-import springfox.documentation.annotations.Cacheable;
-
 import java.util.List;
+import org.springframework.cache.annotation.Cacheable;
 
 public interface SuperHeroRepositoryPort {
 

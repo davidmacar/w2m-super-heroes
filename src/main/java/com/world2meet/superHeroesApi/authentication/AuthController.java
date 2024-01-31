@@ -1,0 +1,30 @@
+package com.world2meet.superHeroesApi.authentication;
+
+import com.world2meet.superHeroesApi.authentication.model.AuthResponse;
+import com.world2meet.superHeroesApi.authentication.model.LoginRequest;
+import com.world2meet.superHeroesApi.authentication.model.RegisterRequest;
+import com.world2meet.superHeroesApi.authentication.service.AuthServicePort;
+import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/auth")
+@AllArgsConstructor
+public class AuthController {
+
+    private final AuthServicePort authService;
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
+        return ResponseEntity.ok(this.authService.login(request));
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
+            return ResponseEntity.ok(this.authService.register(request));
+    }
+
+}

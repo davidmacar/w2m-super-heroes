@@ -2,9 +2,9 @@ package com.world2meet.superHeroesApi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 
-@EnableCaching
+//TODO: Uncomment this line to enable cache
+//@EnableCaching
 @SpringBootApplication
 public class SuperHerosApplication {
 

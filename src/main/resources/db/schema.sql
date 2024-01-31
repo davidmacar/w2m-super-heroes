@@ -7,10 +7,12 @@ create table hero
     primary key (superHeroName)
 );
 
-create table apiUser
+CREATE TYPE ROLE AS ENUM ('ADMIN', 'USER');
+
+create table userApi
 (
     username varchar(50) not null,
-    password varchar(20) not null,
-    role varchar(20) not null,
+    password varchar(150) not null,
+    role ROLE not null,
     primary key (username)
 );
