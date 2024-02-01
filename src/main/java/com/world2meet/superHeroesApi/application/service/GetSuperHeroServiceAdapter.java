@@ -7,7 +7,7 @@ import com.world2meet.superHeroesApi.domain.service.GetSuperHeroServicePort;
 import com.world2meet.superHeroesApi.domain.utils.LogExecutionTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,20 +17,23 @@ public class GetSuperHeroServiceAdapter implements GetSuperHeroServicePort {
     private final SuperHeroRepositoryPort superHeroRepositoryPort;
 
     @Override
-    @LogExecutionTime
-    public SuperHeroDto getSuperHeroById(SuperHeroRequest request) {
-        return this.superHeroRepositoryPort.getSuperHeroById(request.getSuperHeroName());
-    }
-
-    @Override
+    @Cacheable("SuperHeroesCache")
     @LogExecutionTime
     public List<SuperHeroDto> getAllSuperHeroes() {
         return this.superHeroRepositoryPort.getAllSuperHeroes();
     }
 
     @Override
+    @Cacheable("SuperHeroesCache")
     @LogExecutionTime
     public List<SuperHeroDto> getSuperHeroesContainingInName(SuperHeroRequest request) {
-        return null;
+        return this.superHeroRepositoryPort.getSuperHeroesContainingInName(request.getContainedInName());
+    }
+
+    @Override
+    @Cacheable("SuperHeroesCache")
+    @LogExecutionTime
+    public SuperHeroDto getSuperHeroById(SuperHeroRequest request) {
+        return this.superHeroRepositoryPort.getSuperHeroById(request.getSuperHeroName());
     }
 }

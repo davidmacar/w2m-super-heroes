@@ -6,5 +6,10 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface SuperHeroMapper {
-    List<SuperHeroDto> getAllSuperHeroes();
+    public List<SuperHeroDto> getAllSuperHeroes();
+    public List<SuperHeroDto> getSuperHeroesContainingInName(String name);
+    public SuperHeroDto getSuperHeroById(String id);
+    public void deleteSuperHero(String id);
+
+    public void modifySuperHero(SuperHeroDto superHeroDto);
 }

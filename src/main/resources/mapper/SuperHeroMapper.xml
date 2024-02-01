@@ -12,7 +12,27 @@
     </resultMap>
 
     <select id="getAllSuperHeroes" resultMap="superHeroResultMap">
-        SELECT * FROM hero
+        SELECT superHeroName, realName, universe ,power FROM hero
     </select>
 
+    <select id="getSuperHeroesContainingInName" parameterType="String" resultMap="superHeroResultMap">
+        SELECT superHeroName, realName, universe ,power FROM hero
+        WHERE LOWER(superHeroName) LIKE CONCAT('%', LOWER(#{name}), '%')
+    </select>
+
+    <select id="getSuperHeroById" parameterType="String" resultMap="superHeroResultMap">
+        SELECT superHeroName, realName, universe ,power FROM hero
+        WHERE  LOWER(superHeroName) =  LOWER(#{superHeroName})
+    </select>
+
+    <delete id="deleteSuperHero" parameterType="String">
+        DELETE FROM hero
+        WHERE  LOWER(superHeroName) =  LOWER(#{superHeroName})
+    </delete>
+
+    <update id="modifySuperHero" parameterType="com.world2meet.superHeroesApi.domain.model.SuperHeroDto">
+        UPDATE hero
+        SET realName = #{realName}, universe = #{universe}, power = #{power}
+        WHERE  LOWER(superHeroName) =  LOWER(#{superHeroName})
+    </update>
 </mapper>

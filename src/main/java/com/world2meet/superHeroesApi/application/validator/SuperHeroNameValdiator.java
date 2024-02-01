@@ -14,7 +14,7 @@ public class SuperHeroNameValdiator implements Validator {
     public void validate(Object target, Errors errors) {
         SuperHeroRequest superHeroRequest = (SuperHeroRequest) target;
         if (superHeroRequest.getSuperHeroName().isEmpty()) {
-            errors.rejectValue("superHeroName", "field.required", "El campo superHeroName es necesario");
+            errors.rejectValue("superHeroName", "field.required", "The field superHeroName is required");
         }
     }
 }
