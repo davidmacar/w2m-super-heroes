@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-@Slf4j
 public class GetSuperHeroServiceAdapter implements GetSuperHeroServicePort {
 
     private final SuperHeroRepositoryPort superHeroRepositoryPort;

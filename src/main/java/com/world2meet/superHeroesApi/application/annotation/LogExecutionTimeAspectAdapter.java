@@ -16,8 +16,7 @@ public class LogExecutionTimeAspectAdapter {
         long start = System.currentTimeMillis();
         Object proceed = joinPoint.proceed();
         long executionTime = System.currentTimeMillis() - start;
-        Logger.getLogger("LogExecutionTimeAspectAdapter").info(joinPoint.getSignature() + " executed in " + executionTime + "ms");
-        // TODO: add colors and improve the log message
+        Logger.getLogger("LogExecutionTimeAspectAdapter").info("\u001B[32m" + joinPoint.getSignature() + " executed in " + executionTime + "ms" + "\u001B[0m");
         return proceed;
     }
 }
