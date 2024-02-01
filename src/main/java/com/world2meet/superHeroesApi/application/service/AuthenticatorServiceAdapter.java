@@ -14,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-//TODO: Probablemente un Repository
 @Service
 @AllArgsConstructor
 public class AuthenticatorServiceAdapter implements AuthenticatorServicePort {

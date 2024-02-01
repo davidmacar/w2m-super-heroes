@@ -1,10 +1,14 @@
 package com.world2meet.superHeroesApi.infrastructure.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.world2meet.superHeroesApi.domain.model.response.AuthResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
@@ -15,9 +19,11 @@ class SuperHeroControllerIT {
   @Autowired private MockMvc mockMvc;
 
   @Test
-  void integracionTest() throws Exception {
+  void getSuperHeroesTest() throws Exception {
+    String token = getToken();
     mockMvc
-        .perform(MockMvcRequestBuilders.get("/api/superheros/getAllSuperHeroes"))
+        .perform(MockMvcRequestBuilders.get("/api/superheroes/getAllSuperHeroes")
+                .header("Authorization",  "Bearer " + token))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(
             MockMvcResultMatchers.content()
@@ -72,5 +78,15 @@ class SuperHeroControllerIT {
                         + "{\"superHeroName\":\"Raven\",\"realName\":\"Rachel Roth\",\"universe\":\"DC\",\"power\":\"Empathy\"},"
                         + "{\"superHeroName\":\"Starfire\",\"realName\":\"Koriand'r\",\"universe\":\"DC\",\"power\":\"Energy Projection\"},"
                         + "{\"superHeroName\":\"Beast Boy\",\"realName\":\"Garfield Logan\",\"universe\":\"DC\",\"power\":\"Shape Shifting\"}]"));
+  }
+
+  private String getToken() throws Exception {
+    MvcResult result = mockMvc
+            .perform(MockMvcRequestBuilders.post("/api/auth/login")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content("{\"username\":\"davidmacar\",\"password\":\"davidmacar\"}")).andReturn();
+    String str = result.getResponse().getContentAsString();
+    AuthResponse authResponse = new ObjectMapper().readValue(str, AuthResponse.class);
+    return authResponse.getToken();
   }
 }

@@ -51,6 +51,4 @@ VALUES  ('Spiderman', 'Peter Parker', 'Marvel', 'Spider Sense'),
         ('Beast Boy', 'Garfield Logan', 'DC', 'Shape Shifting');
 
 INSERT INTO userApi (username, password, role)
-VALUES  ('admin', 'admin', 'ADMIN'),
-        ('user', 'user', 'USER'),
-        ('davidmacar', 'david00', 'USER');
+VALUES  ('davidmacar', '$2a$10$HckVmtH0/ks6V5FjHP/5k.lxwuy3tR94UCAapq3lUbFqG7ksYiqHe', 'USER');

@@ -16,9 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtServiceAdapter implements JwtServicePort {
 
-    // TODO: Cambiar esta clave por una variable de entorno
-    private static final String SECRET_KEY="586E3272357538782F413F4428472B4B6250655368566B597033733676397924";
-
+    private static final String SECRET_KEY="MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAgO27p0zrmK2zlKU/iFzMNYLtfPmPlvc9Ce/S+azTfslUr6yGI75xVp9Whxdir6WmjJ/3o7B5hnqt+tlYWBW16wIDAQABAkAO5WjNB6Ig3dDl18Hja3VcqWfvDJZ+hspSn5bsqf81ortAVG9FzLKMu0Xz2A3k6gxET76BMJ016bKWiMz2iPOhAiEAw+k5S1VjDGbO5bQoJC4X1XIbUvA746nfplvenhCG5bcCIQCoeRs0gn27cFx0GXWb67cop/lBiseJ4CianRtWF8FRbQIhAIGdKMHVkT1gO1wv0Cr3r98QqlE6DXV3KzemKmfLKWSLAiADGadsgfI6Xsj0wfsuEVpffyfREvK1ENDud3GnVeySyQIgPFRQr6GXwbgx88AJ08N+xA+PbDvhXYDV7rp2rfJrRQU=";
     @Override
     public String getToken(UserDetails user) {
         return Jwts

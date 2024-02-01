@@ -16,7 +16,7 @@ public class SuperHeroRepositoryAdapter implements SuperHeroRepositoryPort {
     private final SuperHeroMapper superHeroMapper;
 
     @Override
-    public SuperHeroDto getSuperHeroById(SuperHeroDto superHero) {
+    public SuperHeroDto getSuperHeroById(String id) {
         return new SuperHeroDto("Superman", "Clark Kent",
                 "Kryptonian", "Metropolis");
     }
@@ -27,7 +27,7 @@ public class SuperHeroRepositoryAdapter implements SuperHeroRepositoryPort {
     }
 
     @Override
-    public List<SuperHeroDto> getSuperHeroesContainingInName(SuperHeroDto superHero) {
+    public List<SuperHeroDto> getSuperHeroesContainingInName(String name) {
         return null;
     }
 }

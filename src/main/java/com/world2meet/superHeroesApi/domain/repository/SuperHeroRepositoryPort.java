@@ -7,9 +7,9 @@ import org.springframework.cache.annotation.Cacheable;
 public interface SuperHeroRepositoryPort {
 
     @Cacheable("getSuperHeroById") // Almacenar la respuesta en la cache para evitar llamadas al método
-    SuperHeroDto getSuperHeroById(SuperHeroDto superHero);
+    SuperHeroDto getSuperHeroById(String id);
 
     List<SuperHeroDto> getAllSuperHeroes();
 
-    List<SuperHeroDto> getSuperHeroesContainingInName(SuperHeroDto superHero);
+    List<SuperHeroDto> getSuperHeroesContainingInName(String name);
 }
